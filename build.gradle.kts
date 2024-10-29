@@ -92,7 +92,8 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-$mcVersion-common-api:${property("jeiVersion")}"))
     runtimeOnly(fg.deobf("mezz.jei:jei-$mcVersion-forge:${property("jeiVersion")}"))
 
-    compileOnly(fg.deobf("curse.maven:SereneSeasons-291874:${property("ssVersion")}"))
+    implementation(fg.deobf("curse.maven:glitchcore-955399:${property("gcVersion")}"))
+    implementation(fg.deobf("curse.maven:SereneSeasons-291874:${property("ssVersion")}"))
 
     runtimeOnly(fg.deobf("vazkii.patchouli:Patchouli:${property("patchouliVersion")}"))
 

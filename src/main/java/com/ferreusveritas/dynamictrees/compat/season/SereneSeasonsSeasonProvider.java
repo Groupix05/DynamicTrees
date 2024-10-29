@@ -9,8 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import sereneseasons.api.season.Season.SubSeason;
 import sereneseasons.api.season.SeasonHelper;
-import sereneseasons.config.SeasonsConfig;
-import sereneseasons.config.ServerConfig;
+import sereneseasons.init.ModConfig;
 import sereneseasons.season.SeasonHooks;
 
 public class SereneSeasonsSeasonProvider implements SeasonProvider {
@@ -29,7 +28,7 @@ public class SereneSeasonsSeasonProvider implements SeasonProvider {
 
     @Override
     public boolean shouldSnowMelt(Level level, BlockPos pos) {
-        if (SeasonsConfig.generateSnowAndIce.get() && seasonValue < com.ferreusveritas.dynamictrees.compat.season.SeasonHelper.WINTER) {
+        if (ModConfig.seasons.generateSnowAndIce && seasonValue < com.ferreusveritas.dynamictrees.compat.season.SeasonHelper.WINTER) {
             Holder<Biome> biomeHolder = level.getBiome(pos);
             // TODO 1.20: Reinstate Serene Seasons compat here, BiomeConfig class is gone
             return /*BiomeConfig.enablesSeasonalEffects(biomeHolder) &&*/
@@ -41,7 +40,7 @@ public class SereneSeasonsSeasonProvider implements SeasonProvider {
     public static void registerSereneSeasonsProvider (){
         CompatHandler.registerSeasonManager(DynamicTrees.SERENE_SEASONS, () -> {
             NormalSeasonManager seasonManager = new NormalSeasonManager(
-                    world -> ServerConfig.isDimensionWhitelisted(world.dimension()) ?
+                    world -> ModConfig.seasons.isDimensionWhitelisted(world.dimension()) ?
                             new Tuple<>(new SereneSeasonsSeasonProvider(), new ActiveSeasonGrowthCalculator()) :
                             new Tuple<>(new NullSeasonProvider(), new NullSeasonGrowthCalculator())
             );
