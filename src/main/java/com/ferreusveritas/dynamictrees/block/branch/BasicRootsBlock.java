@@ -422,7 +422,7 @@ public class BasicRootsBlock extends BranchBlock implements SimpleWaterloggedBlo
         if (isFullBlock(state)) return getFamily().getPrimitiveCoveredRoots().orElse(Blocks.AIR).defaultDestroyTime();
         final int radius = this.getRadius(level.getBlockState(pos));
         final float hardness = this.getFamily().getPrimitiveLog().orElse(Blocks.AIR).defaultBlockState()
-                .getDestroySpeed(level, pos) * (radius * radius) / 64.0f * 8.0f;
+                .getDestroySpeed(level, pos) * DTConfigs.TREE_HARDNESS_MULTIPLIER.get().floatValue() * (radius * radius) / 64.0f * 8.0f;
         return (float) Math.min(hardness, DTConfigs.MAX_TREE_HARDNESS.get()); // So many youtube let's plays start with "OMG, this is taking so long to break this tree!"
     }
 

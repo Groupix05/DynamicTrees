@@ -33,6 +33,7 @@ public class DTConfigs {
     public static final ForgeConfigSpec.DoubleValue TREE_GROWTH_MULTIPLIER;
     public static final ForgeConfigSpec.DoubleValue TREE_HARVEST_MULTIPLIER;
     public static final ForgeConfigSpec.DoubleValue MAX_TREE_HARDNESS;
+    public static final ForgeConfigSpec.DoubleValue TREE_HARDNESS_MULTIPLIER;
     public static final ForgeConfigSpec.IntValue TREE_GROWTH_FOLDING;
     public static final ForgeConfigSpec.BooleanValue DROP_STICKS;
     public static final ForgeConfigSpec.DoubleValue SCALE_BIOME_GROWTH_RATE;
@@ -109,6 +110,8 @@ public class DTConfigs {
                 defineInRange("harvestMultiplier", 1f, 0f, 128f);
         MAX_TREE_HARDNESS = SERVER_BUILDER.comment("Maximum harvesting hardness that can be calculated. Regardless of tree thickness.").
                 defineInRange("maxTreeHardness", 20f, 1f, 200f);
+        TREE_HARDNESS_MULTIPLIER = SERVER_BUILDER.comment("A multiplier of tree hardness. Higher values make trees slower to chop, lower values makes them faster to chop.").
+                defineInRange("maxTreeHardness", 1, 0.05f, 20f);
         TREE_GROWTH_FOLDING = SERVER_BUILDER.comment("Do X growth cycles at once while ignoring (X-1)/X attempts.  Higher numbers can improve client side performance but too high can make trees grow wierd.").
                 defineInRange("growthFolding", 2, 1, 8);
         DROP_STICKS = SERVER_BUILDER.comment("If enabled then sticks will be dropped for partial logs").
