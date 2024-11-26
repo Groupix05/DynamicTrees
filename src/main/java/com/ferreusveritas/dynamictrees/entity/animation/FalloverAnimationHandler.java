@@ -66,7 +66,7 @@ public class FalloverAnimationHandler implements AnimationHandler {
             } else {
                 Species species = entity.getSpecies();
                 SoundEvent sound = species.getFallingTreeEndSound(entity.getVolume(), entity.hasLeaves());
-                entity.playSound(sound, 3, species.getFallingTreePitch(entity.getVolume()));
+                entity.playSound(sound, 1.5f, species.getFallingTreePitch(entity.getVolume()));
                 getData(entity).endSoundPlayed = true;
             }
 
