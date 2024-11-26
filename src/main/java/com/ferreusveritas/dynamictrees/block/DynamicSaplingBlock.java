@@ -132,8 +132,10 @@ public class DynamicSaplingBlock extends Block implements BonemealableBlock, IPl
     }
 
     protected void dropBlock(Level level, BlockState state, BlockPos pos) {
-        level.addFreshEntity(new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, getSpecies().getSeedStack(1)));
-        level.removeBlock(pos, false);
+        if (level instanceof ServerLevel serverLevel){
+            getDrops(state, new LootParams.Builder(serverLevel)).forEach((drop) -> popResource(level, pos, drop));
+            level.removeBlock(pos, false);
+        }
     }
 
     @Nonnull

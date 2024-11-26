@@ -111,7 +111,7 @@ public class DTConfigs {
         MAX_TREE_HARDNESS = SERVER_BUILDER.comment("Maximum harvesting hardness that can be calculated. Regardless of tree thickness.").
                 defineInRange("maxTreeHardness", 20f, 1f, 200f);
         TREE_HARDNESS_MULTIPLIER = SERVER_BUILDER.comment("A multiplier of tree hardness. Higher values make trees slower to chop, lower values makes them faster to chop.").
-                defineInRange("maxTreeHardness", 1, 0.05f, 20f);
+                defineInRange("treeHardnessMultiplier", 1, (1/128f), 32f);
         TREE_GROWTH_FOLDING = SERVER_BUILDER.comment("Do X growth cycles at once while ignoring (X-1)/X attempts.  Higher numbers can improve client side performance but too high can make trees grow wierd.").
                 defineInRange("growthFolding", 2, 1, 8);
         DROP_STICKS = SERVER_BUILDER.comment("If enabled then sticks will be dropped for partial logs").
